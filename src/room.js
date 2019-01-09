@@ -1,6 +1,6 @@
 import { Room } from 'colyseus'
 
-const RECONNET_TIME = 10
+const RECONNET_TIME = 5
 
 export class Player {
   constructor(_id) {
@@ -62,11 +62,16 @@ export class DefaultRoom extends Room {
 
   stateChange() {
     this.state.clock++
-    
-    this.clock.setTimeout(
-      this.stateChange.bind(this),
-      3000
-    )
+
+    // Test purpose
+    if(this.clock === 100) {
+      this.disconnect()
+    } else {
+      this.clock.setTimeout(
+        this.stateChange.bind(this),
+        3000
+      )
+    }
   }
 
   startGame() {

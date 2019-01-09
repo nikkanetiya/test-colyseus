@@ -13,6 +13,7 @@ export class DefaultRoom extends Room {
   constructor() {
     super()
 
+    this.autoDispose = false
     this.maxClients = 2
   }
 
@@ -47,7 +48,7 @@ export class DefaultRoom extends Room {
       // allow disconnected client to rejoin into this room until 20 seconds
       await this.allowReconnection(client, RECONNET_TIME);
     } catch (e) {
-      //
+      console.log('timeout')
     }
   }
 
@@ -65,7 +66,7 @@ export class DefaultRoom extends Room {
     this.state.clock++
 
     // Test purpose
-    if(this.clock === 100) {
+    if(this.state.clock === 10) {
       this.disconnect()
     } else {
       this.clock.setTimeout(

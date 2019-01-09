@@ -77,6 +77,6 @@ export class DefaultRoom extends Room {
 
   startGame() {
     this.lock()
-    // this.stateChange()
+    this.stateChange()
   }
 }

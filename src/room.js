@@ -1,6 +1,6 @@
 import { Room } from 'colyseus'
 
-const RECONNET_TIME = 5
+const RECONNET_TIME = 10
 
 export class Player {
   constructor(_id) {
@@ -42,6 +42,7 @@ export class DefaultRoom extends Room {
     // flag client as inactive for other users
     // this.state.inactivateClient(client);
   
+    console.log('onLeave')
     try {
       // allow disconnected client to rejoin into this room until 20 seconds
       await this.allowReconnection(client, RECONNET_TIME);
